@@ -22,21 +22,24 @@ const bottom_right = document.querySelector("#bottom-right");
 
 const play_button = document.querySelector("#start");
 const reset_button = document.querySelector("#reset");
-
+const blabla = document.querySelector("#blabla");
 
 
 
 cross.style.display = "none";
+blabla.style.display = "none";
 
 question.onclick = function() { 
 
     this.style.display = "none";
     cross.style.display = "initial";
+    blabla.style.display = "initial";
 }
 cross.onclick = function() { 
 
     this.style.display = "none";
     question.style.display = "initial";
+    blabla.style.display = "none";
 }
 
 
