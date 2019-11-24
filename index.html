@@ -6,6 +6,11 @@
     <title> Simon </title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <audio id="_do"> <source src="sounds/do.wav"></source> </audio>
+    <audio id="_re"> <source src="sounds/re.wav"></source> </audio>
+    <audio id="_mi"> <source src="sounds/mi.wav"></source> </audio>
+    <audio id="_fa"> <source src="sounds/fa.wav"></source> </audio>
 </head>
 
 <body>
@@ -17,13 +22,15 @@
         <div id="bottom-right"></div>
 
         <div id="setup">
-            <div id="title"> Simon </div>
+            <div id="title"> simon </div>
+            <div id="scores">
+                <div id="touch-score"><p> </p></div>
+                <div id="round-score"><p> </p></div>
+            </div>
             <div id="btn">
                 <button class="btn" id="start"> <i class="fas fa-play"></i> </button>
                 <button class="btn" id="reset"> <i class="fas fa-redo-alt"></i> </button>
             </div>
-            <div id="touch-score"></div>
-            <div id="round-score"></div>
         </div>
     </div>
 

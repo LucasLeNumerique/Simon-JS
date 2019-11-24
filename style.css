@@ -1,5 +1,12 @@
+@font-face{
+    font-family:'dismay';
+    src: url("fonts/dismay.otf");
+   }
+   
+   
 body {
     background: black;
+    font-family: "dismay";
 }
 
 #pads {
@@ -15,7 +22,7 @@ body {
 #top-left, #top-right, #bottom-left, #bottom-right {
     width: 250px;
     height: 250px;
-    border: 1px solid rgb(113, 72, 128);
+    border: 1px solid rgb(113, 72, 128); /* Pas la couleur des bordures */
     box-sizing: border-box;
 }
 
@@ -61,14 +68,49 @@ body {
 }
 
 #setup {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     /* border: 2px solid white; */
-    /* border-radius: 50%; */
+    padding-top: 15px;
+    border-radius: 50%;
     background: rgb(34, 0, 41);
     position: absolute;
-    top: 150px;
-    left: 150px;
+    top: 125px;
+    left: 125px;
+}
+
+#title {
+    font-size: 40px;
+    color: rgb(107, 0, 157);
+    text-align: center;
+}
+
+#scores {
+    width: 100px;
+    border: 1px solid red;
+    margin: 0 auto;
+}
+
+#touch-score {
+    width: 75px;
+    height: 30px;
+    border: 1px solid white;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 30px;
+    line-height: 30px;
+    color: rgb(134, 44, 175);
+}
+
+#round-score {
+    width: 75px;
+    height: 75px;
+    border: 1px solid white;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 75px;
+    line-height: 75px;
+    color: rgb(187, 68, 241);
 }
 
 #btn {
@@ -79,7 +121,7 @@ body {
     overflow: hidden;
     position: absolute;
     bottom: 10px;
-    left: 80px;
+    left: 105px;
     
 }
 
@@ -87,19 +129,27 @@ body {
     /* border: 1px solid green; */
     font-size: 38px;
     line-height: 38px;
-    color: rgb(10, 201, 10);
+    color: rgb(107, 0, 157);
     margin-bottom: 5px;;
     padding: 0;
     border: none;
     background: none;
+}
+#start:hover {
+    color: rgb(170, 34, 233);
+    transition: 0.5s;
 }
 
 #reset {
     /* border: 1px solid red; */
     font-size: 28px;
     line-height: 28px;
-    color: rgb(216, 3, 3);
+    color: rgb(107, 0, 157);
     padding: 0;
     border: none;
     background: none; 
+}
+#reset:hover {
+    color: rgb(170, 34, 233);
+    transition: 0.5s;
 }
