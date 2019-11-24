@@ -1,4 +1,4 @@
-let order = [];
+let order = []; 
 let playerOrder = [];
 let flash;
 let round;
@@ -9,7 +9,10 @@ let noise = true;
 let on = false;
 let win;
 
-const touchCounter = document.querySelector("#touch-score");
+const question = document.querySelector("#question");
+const cross = document.querySelector("#cross");
+
+const clickCounter = document.querySelector("#touch-score");
 const roundCounter = document.querySelector("#round-score");
 
 const top_left = document.querySelector("#top-left");
@@ -20,11 +23,39 @@ const bottom_right = document.querySelector("#bottom-right");
 const play_button = document.querySelector("#start");
 const reset_button = document.querySelector("#reset");
 
+
+
+
+cross.style.display = "none";
+
+question.onclick = function() { 
+
+    this.style.display = "none";
+    cross.style.display = "initial";
+}
+cross.onclick = function() { 
+
+    this.style.display = "none";
+    question.style.display = "initial";
+}
+
+
+
+
 document.getElementById("start").addEventListener("click", function() {
 
     on = true;
     play();
 });
+
+document.getElementById("start").onclick = function() { this.style.display = "none"; }
+
+document.getElementById("reset").onclick = function() {
+
+    document.getElementById("start").style.display = "initial";
+    document.location.reload(true);
+}
+
         
 function play() {
     win = false;
@@ -33,8 +64,8 @@ function play() {
     flash = 0;
     intervalId = 0;
     round = 1;
-    document.getElementById("touch-score").innerHTML = "0";
-    document.getElementById("round-score").innerHTML = "1";
+    clickCounter.innerHTML = "0";
+    roundCounter.innerHTML = "1";
     good = true;
     for (var i = 0; i < 8; i++) {
         order.push(Math.floor(Math.random() * 4) + 1);
@@ -68,8 +99,12 @@ function gameTurn() {
 
 function one() {
     if (noise) {
-        
+       
         let audio = document.getElementById("_do");
+        
+        audio.pause();
+        audio.currentTime = 0;
+
         audio.play();
     }
     noise = true;
@@ -79,6 +114,10 @@ function two() {
     if (noise) {
         
         let audio = document.getElementById("_re");
+
+        audio.pause();
+        audio.currentTime = 0;
+
         audio.play();
     }
     noise = true;
@@ -88,6 +127,10 @@ function three() {
     if (noise) {
         
         let audio = document.getElementById("_mi");
+
+        audio.pause();
+        audio.currentTime = 0;
+
         audio.play();
     }
     noise = true;
@@ -97,6 +140,10 @@ function four() {
     if (noise) {
         
         let audio = document.getElementById("_fa");
+
+        audio.pause();
+        audio.currentTime = 0;
+
         audio.play();
     }
     noise = true;
@@ -128,7 +175,7 @@ top_left.addEventListener('click', (event) => {
 top_right.addEventListener('click', (event) => {
 
     if (on) {
-        playerOrder.push(1);
+        playerOrder.push(2);
         check();
         two();
 
@@ -142,7 +189,7 @@ top_right.addEventListener('click', (event) => {
 bottom_right.addEventListener('click', (event) => {
 
     if (on) {
-        playerOrder.push(1);
+        playerOrder.push(3);
         check();
         three();
 
@@ -156,7 +203,7 @@ bottom_right.addEventListener('click', (event) => {
 bottom_left.addEventListener('click', (event) => {
 
     if (on) {
-        playerOrder.push(1);
+        playerOrder.push(4);
         check();
         four();
 
@@ -173,9 +220,9 @@ function check() {
     good = false;
 
     if (good == false) {
-        
+
         corrColor();
-        roundCounter.innerHTML = "NOPE";
+        roundCounter.innerHTML = "X";
         setTimeout(() => {
             roundCounter.innerHTML = round;
             clearColor();
@@ -193,4 +240,11 @@ function check() {
         roundCounter.innerHTML = round;
         intervalId = setInterval(gameTurn, 800);
     }
+}
+
+function corrColor() {
+    top_left.style.backgroundColor = "#24A035";
+    top_right.style.backgroundColor = "#0338CE";
+    bottom_right.style.backgroundColor = "#BE0202";
+    bottom_left.style.backgroundColor = "#CCCB00";
 }
