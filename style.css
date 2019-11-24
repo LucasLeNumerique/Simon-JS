@@ -1,0 +1,105 @@
+body {
+    background: black;
+}
+
+#pads {
+    width: 500px;
+    height: 500px;
+    /* border: 1px solid blue; */
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#top-left, #top-right, #bottom-left, #bottom-right {
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgb(113, 72, 128);
+    box-sizing: border-box;
+}
+
+#top-left {
+    background: rgb(1, 70, 9, 0.5);
+    border-top-color: rgb(11, 104, 19);
+    border-left-color: rgb(11, 104, 19);
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 10% 0 0 0;
+}
+#top-right {
+    background: rgb(18, 38, 109, 0.5);
+    border-top-color: rgb(10, 69, 197);
+    border-right-color: rgb(10, 69, 197);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 0 10% 0 0;
+}
+#bottom-left {
+    background: rgb(99, 94, 5, 0.5);
+    border-bottom-color: rgb(185, 159, 13);
+    border-left-color: rgb(185, 159, 13);
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top: none;
+    border-right: none;
+    border-radius:  0 0 0 10%;
+}
+#bottom-right {
+    background: rgb(88, 18, 18, 0.5);
+    border-bottom-color: rgb(173, 22, 22);
+    border-right-color: rgb(173, 22, 22);
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-top: none;
+    border-left: none;
+    border-radius: 0 0 10% 0;
+}
+
+#setup {
+    width: 200px;
+    height: 200px;
+    /* border: 2px solid white; */
+    /* border-radius: 50%; */
+    background: rgb(34, 0, 41);
+    position: absolute;
+    top: 150px;
+    left: 150px;
+}
+
+#btn {
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    /* border: 1px solid white; */
+    overflow: hidden;
+    position: absolute;
+    bottom: 10px;
+    left: 80px;
+    
+}
+
+#start {
+    /* border: 1px solid green; */
+    font-size: 38px;
+    line-height: 38px;
+    color: rgb(10, 201, 10);
+    margin-bottom: 5px;;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+#reset {
+    /* border: 1px solid red; */
+    font-size: 28px;
+    line-height: 28px;
+    color: rgb(216, 3, 3);
+    padding: 0;
+    border: none;
+    background: none; 
+}
