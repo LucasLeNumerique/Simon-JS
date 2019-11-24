@@ -1,32 +1,32 @@
-let order = []; 
+let order = [];     /* MISE EN PLACE ARRAY CHIFFRES */
 let playerOrder = [];
 let flash;
-let round;
-let good;
-let ordiplay;
-let intervalId;
-let noise = true;
+let round;  /* TOUR */
+let good;       /* RECONNAISSANCE SEQUENCE COULEURS */
+let ordiplay;   /* SEQUENCE DU TOUT */
+let intervalId;     /* CADENCE */
+let noise = true;       /* SON ACTIVE */
 let on = false;
-let win;
+let win;    /* SUCCES TOUR */
 
-const question = document.querySelector("#question");
+const question = document.querySelector("#question");       /* ICONES TOGGLE */
 const cross = document.querySelector("#cross");
 
 const clickCounter = document.querySelector("#touch-score");
 const roundCounter = document.querySelector("#round-score");
 
-const top_left = document.querySelector("#top-left");
+const top_left = document.querySelector("#top-left");       /* PADS */
 const top_right = document.querySelector("#top-right");
 const bottom_left = document.querySelector("#bottom-left");
 const bottom_right = document.querySelector("#bottom-right");
 
-const play_button = document.querySelector("#start");
+const play_button = document.querySelector("#start");   /* PLAY | RESET */
 const reset_button = document.querySelector("#reset");
 const blabla = document.querySelector("#blabla");
 
 
 
-cross.style.display = "none";
+cross.style.display = "none";           /* AFFICHAGE REGLES */
 blabla.style.display = "none";
 
 question.onclick = function() { 
@@ -44,8 +44,7 @@ cross.onclick = function() {
 
 
 
-
-document.getElementById("start").addEventListener("click", function() {
+document.getElementById("start").addEventListener("click", function() {     /* BOUTTONS LANCER PARTIE | RECHARGER PAGE */
 
     on = true;
     play();
@@ -60,8 +59,8 @@ document.getElementById("reset").onclick = function() {
 }
 
         
-function play() {
-    win = false;
+function play() {       /* CREATION ARRAY SEQUENCE = TRUE , ORDI QUI JOUE, */
+
     order = [];
     playerOrder = [];
     flash = 0;
@@ -70,7 +69,7 @@ function play() {
     clickCounter.innerHTML = "0";
     roundCounter.innerHTML = "1";
     good = true;
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 20; i++) {
         order.push(Math.floor(Math.random() * 4) + 1);
     }
     ordiplay = true;
@@ -100,18 +99,18 @@ function gameTurn() {
     }
 }
 
-function one() {
+function one() {            /* PADS = COULEURS + SONS */      
     if (noise) {
        
         let audio = document.getElementById("_do");
         
-        audio.pause();
+        audio.pause();          /* fichiers audio qui duraient trop longtemps, coupaient son de la prochaine couleur cliquée => stopper au prochain clic */
         audio.currentTime = 0;
 
         audio.play();
     }
     noise = true;
-    top_left.style.backgroundColor = "#24A035"
+    top_left.style.backgroundColor = "#24A035"      /* Illumination pad */
 }
 function two() {
     if (noise) {
@@ -153,7 +152,7 @@ function four() {
     bottom_left.style.backgroundColor = "#CCCB00"
 }
 
-function clearColor() {
+function clearColor() {         /* RESET COULEURS */
 
     top_left.style.backgroundColor = "rgb(1, 70, 9, 0.5)";
     top_right.style.backgroundColor = "rgb(18, 38, 109, 0.5)";
@@ -161,7 +160,7 @@ function clearColor() {
     bottom_right.style.backgroundColor = "rgb(88, 18, 18, 0.5)";
 }
 
-top_left.addEventListener('click', (event) => {
+top_left.addEventListener('click', (event) => {         /* CLIC CHAQUE PAD => VERIFICATION EN FONCTION DE L'ARRAY */
 
     if (on) {
         playerOrder.push(1);
@@ -218,13 +217,13 @@ bottom_left.addEventListener('click', (event) => {
     }
 })
 
-function check() {
+function check() {              /* SI ERREUR */
     if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
     good = false;
 
     if (good == false) {
 
-        corrColor();
+        corrColor();        /* QUATRES PADS ALLUMES & AFFICHAGE "X" AU COMPTEUR DE TOUR => NECESSITE RELANCER PARTIE */
         roundCounter.innerHTML = "X";
         setTimeout(() => {
             roundCounter.innerHTML = round;
@@ -234,7 +233,7 @@ function check() {
         noise = false;
     }
 
-    if (round == playerOrder.length && good && !win) {
+    if (round == playerOrder.length && good && !win) {      /* SI SUCCES => COULEUR EN PLUS ( +1 ROUND) */
 
         round++;
         playerOrder = [];
@@ -245,7 +244,7 @@ function check() {
     }
 }
 
-function corrColor() {
+function corrColor() {              /* GAME OVER */
     top_left.style.backgroundColor = "#24A035";
     top_right.style.backgroundColor = "#0338CE";
     bottom_right.style.backgroundColor = "#BE0202";
